@@ -677,7 +677,7 @@ video{
     display: block; 
     margin: 0 auto;
     top:-30;
-    left:-20;
+    
     right:0;
     bottom:0;
     margin-bottom: 0; 
@@ -728,7 +728,7 @@ video{
 
 #cf4a img{
    
-    max-width:400px;
+    max-width:350px;
     
 }
     
