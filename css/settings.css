@@ -215,14 +215,14 @@ span {
     
     
 }
-
 #title{
     display:block;
     position: relative;
     margin: 0 auto;
+   width: 300;
     top:-177;
     bottom 800;
-    left: 80;
+    left: 25;
     z-index:100;
     
 }
