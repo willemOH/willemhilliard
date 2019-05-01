@@ -652,24 +652,29 @@ video{
 
 @media screen and (max-width: 479px) {
 /* start of phone styles */
-    
+   
 #rat_canvas{
     
   
-    width: 800;
-    height: 800;
-    left:-320;
+    width: 350;
+    height: 500;
+    left:40;
+    top:10;
   
 }
 #rat_canvas2{
-        width:800;
-        left:-70;
+        width:350;
+        height: 300;
+        left:10;
     }
 
     iframe{
-        width: 1400;
+        width: 350;
          left:-100;
+        height; 100;
     }
+    
+
     
 
 .centerPic{
