@@ -1,0 +1,119 @@
+window.onload = function() {
+
+        var container = document.getElementById("canvas")	
+        var width = container.clientWidth;
+        var height = container.clientHeight;
+        
+    const mouse = new THREE.Vector2();
+    const target = new THREE.Vector2();
+    const windowHalf = new THREE.Vector2( width, height );
+    
+var scene = null;
+        var controls;
+        var camera = null;
+        var renderer = null;
+        var mixer = null;
+        var clock = new THREE.Clock();
+    
+       
+        function init3D() {
+            //container = document.createElement( 'div' );
+            //document.body.appendChild( container );
+            
+             
+           
+            
+            	
+				
+			
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize( width, height );
+            container.appendChild(renderer.domElement);
+            
+            
+            scene = new THREE.Scene();
+           
+            camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+
+            var ambientLight = new THREE.AmbientLight(0x080818);
+            scene.add(ambientLight);
+
+            var pointLight = new THREE.PointLight(0xffffff, 1, 100);
+            pointLight.position.set(-5, 1, 5);
+            scene.add(pointLight);
+
+           camera.position.z = 3.5;
+            camera.position.x = 1.5;
+                camera.position.y = 2;
+            controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.target.set( 0, 3, 0 );
+				controls.update();
+            
+            
+            canvas.addEventListener( 'mousemove', onMouseMove, false ); /* adding 'canvas' instead of 'document' to contain mouse move to the render window took you forever! you still don't know what 'scope' does though*/
+            window.addEventListener( 'resize', onWindowResize, false );
+            
+
+        }
+                
+        function onMouseMove( event ) {
+
+	       mouse.x = ( event.clientX - windowHalf.x );
+	       mouse.y = ( event.clientY - windowHalf.x );
+
+        }
+    
+        function onWindowResize() {
+				camera.aspect = width / height;
+				camera.updateProjectionMatrix();
+				renderer.setSize( width, height );
+			}
+
+        function loadScene() {              
+            // Instantiate a loader
+            var loader = new THREE.GLTFLoader();
+
+            // Load a glTF resource
+            loader.load('AJT_files/loading animation web.gltf',
+                function (gltf) {
+                    var model = gltf.scene;
+                    model.rotation.y = - Math.PI / 3;
+                    model.translateX( -.8 );
+                    scene.add(model);
+                   
+                    
+                    mixer = new THREE.AnimationMixer(model);
+                    mixer.clipAction(gltf.animations[0]).play();
+                    
+                    render();
+                });
+            
+        }
+
+        function rotOnOver(){
+            
+            target.x = ( 200 - mouse.x ) * 0.002;
+            target.y = ( 150 - mouse.y ) * 0.002;
+  
+            camera.rotation.x += 0.05 * ( target.y - camera.rotation.x );
+            camera.rotation.y += 0.05 * ( target.x - camera.rotation.y );
+        }
+        
+        function render() {
+            
+            requestAnimationFrame(render);
+            
+            
+            rotOnOver();
+            
+            var delta = clock.getDelta();
+            if (mixer != null) {
+                mixer.update(delta);
+            };
+            renderer.render(scene, camera);
+        }
+
+        init3D();
+        loadScene();
+    
+};
