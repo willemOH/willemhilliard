@@ -1,1 +1,0 @@
-$(function(){function o(){$("#container").css({top:"fixed"===$("header.main").css("position")?$("header").height():"0",paddingBottom:"fixed"===$("footer.main").css("position")?$("footer").outerHeight(!0)+10:"0"})}$(window).on("resize",o),$(".custom_logo").on("load",o),o()});
