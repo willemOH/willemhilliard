@@ -1,0 +1,76 @@
+body {
+				margin: 0px;
+				background-color: 'white';
+				overflow: hidden;
+			}
+
+#canvas {
+   
+    position:relative;
+    display: block; 
+    margin: 0 auto;
+    top: -400px;
+    left: 100px;
+    z-index: -999;
+}
+
+#forms{
+    
+    position:relative;
+    display: block; 
+    margin: 0 auto;
+    top: 200px;
+    left: 10%;
+    color: gray;
+    
+}
+
+#title{
+    
+    position:relative;
+    display: block; 
+    margin: 0 auto;
+    top: 100px;
+    left: 10%;
+    font-family: "arial";
+    font-size: 40px;
+    
+   
+}
+
+#titletext{
+    color: white;
+    background-color: rgb(72,166,87);
+
+}
+
+#conditions{
+     width:400px;
+    
+}
+
+#image{
+    position: fixed;
+    top: 120%;
+}
+
+@media screen and (max-width: 1000px) {
+
+
+    
+#canvas {
+   
+    position:relative;
+    display: block; 
+    margin: 0 auto;
+    top: 0px;
+    left: 0px;
+    z-index: -999;
+    
+}
+    
+#conditions{
+     width:300px;
+    
+}
+}
